@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/abrahamgit/intern-pass.et/issues"
   },
-  "homepage": "https://github.com/abrahamgit/intern-pass.et#readme"
+  "homepage": "https://github.com/abrahamgit/intern-pass.et#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
