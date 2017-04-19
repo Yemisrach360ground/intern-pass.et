@@ -146,12 +146,12 @@ router.put('/:id', function(req, res){
 router.delete('/:id', function(req, res){
     var removeIndex = exams.map(function(exam){
         return exam.id;
-    }).indexOf(req.params.id); 
+    }).indexOf(req.params.id);
     if(removeIndex === -1){
         res.json({message: "question not found"});
     }else{
         exam.splice(removeIndex, 1);
-        res.send({message: "question id " + req.params.id + " is removed.", location: "/delete/"});
+        res.send({message: "question id " + req.params.id + " is removed."});
     }
 });
 
