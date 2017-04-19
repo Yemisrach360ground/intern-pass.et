@@ -1,0 +1,23 @@
+{
+  "name": "intern-pass.et",
+  "version": "1.0.0",
+  "description": "RESTapi project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrahamgit/intern-pass.et.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abrahamgit/intern-pass.et/issues"
+  },
+  "homepage": "https://github.com/abrahamgit/intern-pass.et#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongoose": "^4.9.5"
+  }
+}
