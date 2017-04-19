@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+//todo why would you need the two packages below?
 var multer = require('multer');
 var upload = multer();
 
