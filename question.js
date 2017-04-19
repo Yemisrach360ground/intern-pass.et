@@ -53,10 +53,10 @@ router.get('/:id([0-9]{4,})', function(req, res){
 
 router.post('/', function(req, res){
     //Check if all fields are provided and are valid:
-    if(!req.body.name ||
-        !req.body.level.toString().match(/^[0-9]{4}$/g) ||
-        !req.body.trial.toString().match(/^[0-9]{4}$/g) ||
-        !req.body.timeout.toString().match(/^[0-9]{4}$/g))
+    if(!req.body.title ||
+        !req.body.level.toString().match(/^[0-9]{1}$/g) ||
+        !req.body.trial.toString().match(/^[0-9]{1}$/g) ||
+        !req.body.timeout.toString().match(/^[0-9]{2}$/g))
         {
         res.status(400);
         res.json({message: "Bad Request"});
@@ -79,6 +79,10 @@ router.post('/', function(req, res){
         res.json({message: "New question created.", location: "/exam/" + newId});
     }
 });
+
+
+
+
 
 
 
