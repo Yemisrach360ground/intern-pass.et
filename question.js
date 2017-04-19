@@ -81,6 +81,66 @@ router.post('/', function(req, res){
 });
 
 
+//working on the put request for the api
+
+router.put('/:id', function(req, res){
+    //Check if all fields are provided and are valid:
+    if(!req.body.title ||
+
+      !req.body.level.toString().match(/^[0-9]{1}$/g) ||
+       !req.body.trial.toString().match(/^[0-9]{1}$/g) ||
+       !req.body.timeout.toString().match(/^[0-9]{2}$/g) ||
+       !req.params.id.toString().match(/^[0-9]{4,}$/g)
+    )
+      {
+      res.status(400);
+      res.json({message: "Bad Request"});
+    }
+    else{
+        //Gets us the index of movie with given id.
+        var updateIndex = exams.map(function(exam){
+            return exam.id;
+        }).indexOf(parseInt(req.params.id));
+        if(updateIndex === -1){
+
+            //Movie not found, create new
+            exams.push({
+                id: req.params.id,
+                title: req.body.title,
+                question: req.body.question,
+                answer: req.body.answer,
+                level: req.body.level,
+                subject: req.body.subject,
+                timeout: req.body.timeout,
+                icon: req.body.icon,
+                instruction: req.body.instruction,
+                explanation: req.body.explanation,
+                trial: req.body.trial
+            });
+            res.json({message: "New question created.", location: "/exams/" + req.params.id});
+
+        }
+        else{
+            //Update existing movie
+            exams[updateIndex] = {
+              id: req.params.id,
+              title: req.body.title,
+              question: req.body.question,
+              answer: req.body.answer,
+              level: req.body.level,
+              subject: req.body.subject,
+              timeout: req.body.timeout,
+              icon: req.body.icon,
+              instruction: req.body.instruction,
+              explanation: req.body.explanation,
+              trial: req.body.trial
+            };
+            res.json({message: "question id " + req.params.id + " updated.", location: "/exams/" + req.params.id});
+        }
+    }
+});
+
+
 
 
 
