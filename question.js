@@ -141,6 +141,20 @@ router.put('/:id', function(req, res){
 });
 
 
+//to delete exam question
+
+router.delete('/:id', function(req, res){
+    var removeIndex = exams.map(function(exam){
+        return exam.id;
+    }).indexOf(req.params.id); //Gets us the index of movie with given id.
+    if(removeIndex === -1){
+        res.json({message: "question not found"});
+    }else{
+        exam.splice(removeIndex, 1);
+        res.send({message: "question id " + req.params.id + " is removed."});
+    }
+});
+
 
 
 
