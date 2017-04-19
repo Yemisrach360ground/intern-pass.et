@@ -10,12 +10,29 @@ var exams = [
 
 ];
 
+//id
+//title
+//question
+//answer
+//level
+//subject
+//timeout
+//icon
+//instruction
+//explanation
+//trial
+
+
 //Routes goes here
 
+
+// getting all the datas
 router.get('/', function(req, res){
     res.json(exams);
 });
 
+
+// getting an exam by using an id
 
 router.get('/:id([0-9]{4,})', function(req, res){
     var currExam = exams.filter(function(exam){
@@ -29,6 +46,37 @@ router.get('/:id([0-9]{4,})', function(req, res){
     else{
         res.status(404);//Set status to 404 as exam was not found
         res.json({message: "SORRY! The Exam was Not Found"});
+    }
+});
+
+// creating a new question
+
+router.post('/', function(req, res){
+    //Check if all fields are provided and are valid:
+    if(!req.body.name ||
+        !req.body.level.toString().match(/^[0-9]{4}$/g) ||
+        !req.body.trial.toString().match(/^[0-9]{4}$/g) ||
+        !req.body.timeout.toString().match(/^[0-9]{4}$/g))
+        {
+        res.status(400);
+        res.json({message: "Bad Request"});
+    }
+    else{
+        var newId = exams[exams.length-1].id+1;
+        exams.push({
+            id: newId,
+            title: req.body.title,
+            question: req.body.question,
+            answer: req.body.answer,
+            level: req.body.level,
+            subject: req.body.subject,
+            timeout: req.body.timeout,
+            icon: req.body.icon,
+            instruction: req.body.instruction,
+            explanation: req.body.explanation,
+            trial: req.body.trial
+        });
+        res.json({message: "New question created.", location: "/exam/" + newId});
     }
 });
 
