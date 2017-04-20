@@ -13,7 +13,12 @@ var exams = [
         id: 1001,
         title: "Question Title 1", 
         question: "1. the question goes here", 
-        options: ("option1","option2","option3","option4" ),
+        options: [{
+            optionA:"option a element",
+            optionB:"option b element", 
+            optionC:"option c element",
+            optionD:"option d element "
+        }],
         answer: "1. the answer goes here", 
         level: 1,
         subject: "1. the question subject goes here",
@@ -27,7 +32,12 @@ var exams = [
         id: 1002, 
         title: "Question Title 2", 
         question: "2. the question goes here", 
-        options: ("option1","option2","option3","option4" ),
+        options: [{
+            optionA:"option a element",
+            optionB:"option b element", 
+            optionC:"option c element",
+            optionD:"option d element "
+        }],
         answer: "2. the answer goes here", 
         level: 2, 
         subject: "2. the question subject goes here", 
@@ -40,7 +50,12 @@ var exams = [
         id: 1003, 
         title: "Question Title 3", 
         question: "3. the question goes here", 
-        options: ("option1","option2","option3","option4" ),
+        options: [{
+            optionA:"option a element",
+            optionB:"option b element", 
+            optionC:"option c element",
+            optionD:"option d element "
+        }],
         answer: "3. the answer goes here", 
         level: 2, 
         subject: "3. the question subject goes here", 
@@ -54,7 +69,12 @@ var exams = [
         id: 1004, 
         title: "Question Title 4", 
         question: "4. the question goes here", 
-        options: ("option1","option2","option3","option4" ),
+        options: [{
+            optionA:"option a element",
+            optionB:"option b element", 
+            optionC:"option c element",
+            optionD:"option d element "
+        }],
         answer: "4. the answer goes here", 
         level: 1,
         subject: "3. the question subject goes here", 
@@ -67,7 +87,12 @@ var exams = [
         id: 1005, 
         title: "Question Title 5", 
         question: "5. the question goes here", 
-        options: ("option1","option2","option3","option4" ),
+        options: [{
+            optionA:"option a element",
+            optionB:"option b element", 
+            optionC:"option c element",
+            optionD:"option d element "
+        }],
         answer: "5. the answer goes here", 
         level: 3, 
         subject: "2. the question subject goes here", 
@@ -80,7 +105,12 @@ var exams = [
         id: 1006, 
         title: "Question Title 6", 
         question: "6. the question goes here", 
-        options: ("option1","option2","option3","option4" ),
+        options: [{
+            optionA:"option a element",
+            optionB:"option b element", 
+            optionC:"option c element",
+            optionD:"option d element "
+        }],
         answer: "6. the answer goes here", 
         level: 3,
         subject: "1. the question subject goes here", 
