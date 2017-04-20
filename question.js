@@ -1,7 +1,27 @@
 var express = require('express');
 var router = express.Router();
 var exams = [
-    {id: 1001, title: "Question Title 1", question: "1. the question goes here", answer: "1. the answer goes here", level: 1 ,subject: "1. the question subject goes here", timeout: 60 ,icon: "image1.png", instruction: "1. the instruction for the question goes here", explanation:"the explanation 1 goes here", trial: 0 },
+    //todo rewrite this array of objects downwards instead of horizontal for redability. Just like the first item here
+    {
+        //todo include options array with indices
+        //todo answer must be one of the indices of these options
+        //todo rename timeout to duration
+        //todo make instructions a comman separated list of strings without the leading number
+        //todo same goes with answer, question, and subject - I mean removing the leading number
+        //todo what is level?
+        //todo what is trial?
+        id: 1001,
+        title: "Question Title 1", 
+        question: "1. the question goes here", 
+        answer: "1. the answer goes here", 
+        level: 1,
+        subject: "1. the question subject goes here",
+        timeout: 60,
+        icon: "image1.png",
+        instruction: "1. the instruction for the question goes here",
+        explanation:"the explanation 1 goes here",
+        trial: 0
+    },
     {id: 1002, title: "Question Title 2", question: "2. the question goes here", answer: "2. the answer goes here", level: 2 ,subject: "2. the question subject goes here", timeout: 60 ,icon: "image2.png", instruction: "2. the instruction for the question goes here", explanation:"the explanation 2 goes here", trial: 0 },
     {id: 1003, title: "Question Title 3", question: "3. the question goes here", answer: "3. the answer goes here", level: 2 ,subject: "3. the question subject goes here", timeout: 60 ,icon: "image3.png", instruction: "3. the instruction for the question goes here", explanation:"the explanation 3 goes here", trial: 0 },
     {id: 1004, title: "Question Title 4", question: "4. the question goes here", answer: "4. the answer goes here", level: 1 ,subject: "3. the question subject goes here", timeout: 60 ,icon: "image4.png", instruction: "4. the instruction for the question goes here", explanation:"the explanation 4 goes here", trial: 0 },
@@ -53,6 +73,7 @@ router.get('/:id([0-9]{4,})', function(req, res){
 
 router.post('/', function(req, res){
     //Check if all fields are provided and are valid:
+    //todo what are this regular expressions doing
     if(!req.body.title ||
         !req.body.level.toString().match(/^[0-9]{1}$/g) ||
         !req.body.trial.toString().match(/^[0-9]{1}$/g) ||
@@ -76,6 +97,7 @@ router.post('/', function(req, res){
             explanation: req.body.explanation,
             trial: req.body.trial
         });
+        //todo give the exam object itself as the response
         res.json({message: "New question created.", location: "/exam/" + newId});
     }
 });
@@ -117,6 +139,7 @@ router.put('/:id', function(req, res){
                 explanation: req.body.explanation,
                 trial: req.body.trial
             });
+            //todo return the exam object itself as json
             res.json({message: "New question created.", location: "/exams/" + req.params.id});
 
         }
@@ -135,6 +158,7 @@ router.put('/:id', function(req, res){
               explanation: req.body.explanation,
               trial: req.body.trial
             };
+            //todo return the exam object itself
             res.json({message: "question id " + req.params.id + " updated.", location: "/exams/" + req.params.id});
         }
     }
@@ -151,10 +175,13 @@ router.delete('/:id', function(req, res){
         res.json({message: "question not found"});
     }else{
         exam.splice(removeIndex, 1);
-        res.send({message: "question id " + req.params.id + " is removed."});
+
+        //todo return the deleted exam object itself
+        res.send({message: "question id " + req.params.id + " is removed.", location: "/delete/"});
+
     }
 });
-
+//todo remove extra (unnecessary) newlines
 
 
 
