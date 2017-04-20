@@ -9,25 +9,36 @@ var exams = [
         //todo make instructions a comman separated list of strings without the leading number
         //todo same goes with answer, question, and subject - I mean removing the leading number
         //todo what is level?
+            //the leve will help us to sort how hard the question is 
         //todo what is trial?
+            //and the trial will count how many time he tried to answer the question
         id: 1001,
         title: "Question Title 1", 
         question: "the question goes here", 
-        options: [{
-            optionA:"option a element",
-            optionB:"option b element", 
-            optionC:"option c element",
-            optionD:"option d element "
-        }],
-        answer: "options.optionA", 
+        options: [
+            {
+                id: 1,
+                text : "option a element"
+            }, 
+            {
+                text : "option b element"
+            }, 
+            {
+                text : "option c element"
+            },
+            {
+                text :"option d element "
+            }
+        ],
+        answer: 1, 
         level: 1,
         subject: "the question subject goes here",
         duration: 60,
         icon: "image1.png",
-        instruction: [{
-            inst1:"the instruction for the question goes here", 
-            inst2: "the instruction for the question goes here"
-        }],
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
         explanation:"the explanation 1 goes here",
         trial: 0
     },
@@ -35,20 +46,28 @@ var exams = [
         id: 1002, 
         title: "Question Title 2", 
         question: "the question goes here", 
-        options: [{
-            optionA:"option a element",
-            optionB:"option b element", 
-            optionC:"option c element",
-            optionD:"option d element "
-        }],
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
         answer: "options.optionB", 
         level: 2, 
         subject: "the question subject goes here", 
         duration: 60 ,icon: "image2.png", 
-        instruction: [{
-            inst1:"the instruction for the question goes here", 
-            inst2: "the instruction for the question goes here"
-        }],
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
         explanation:"the explanation 2 goes here", 
         trial: 0 
     },
@@ -56,83 +75,115 @@ var exams = [
         id: 1003, 
         title: "Question Title 3", 
         question: "the question goes here", 
-        options: [{
-            optionA:"option a element",
-            optionB:"option b element", 
-            optionC:"option c element",
-            optionD:"option d element "
-        }],
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
         answer: "options.optionC", 
         level: 2, 
         subject: "the question subject goes here", 
         duration: 60 ,
         icon: "image3.png", 
-         instruction: [{
-            inst1:"the instruction for the question goes here", 
-            inst2: "the instruction for the question goes here"
-        }],
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
     },
     {
         id: 1004, 
         title: "Question Title 4", 
         question: "the question goes here", 
-        options: [{
-            optionA:"option a element",
-            optionB:"option b element", 
-            optionC:"option c element",
-            optionD:"option d element "
-        }],
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
         answer: "options.optionD", 
         level: 1,
         subject: "the question subject goes here", 
         duration: 60 ,
         icon: "image4.png", 
-         instruction: [{
-            inst1:"the instruction for the question goes here", 
-            inst2: "the instruction for the question goes here"
-        }], 
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
         explanation:"the explanation 4 goes here", 
         trial: 0 },
     {
         id: 1005, 
         title: "Question Title 5", 
         question: "the question goes here", 
-        options: [{
-            optionA:"option a element",
-            optionB:"option b element", 
-            optionC:"option c element",
-            optionD:"option d element "
-        }],
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
         answer: "options.optionA",  
         level: 3, 
         subject: "the question subject goes here", 
         duration: 60, 
         icon: "image5.png", 
-         instruction: [{
-            inst1:"the instruction for the question goes here", 
-            inst2: "the instruction for the question goes here"
-        }],
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
         explanation:"the explanation 5 goes here", 
         trial: 0 },
     {
         id: 1006, 
         title: "Question Title 6", 
         question: "the question goes here", 
-        options: [{
-            optionA:"option a element",
-            optionB:"option b element", 
-            optionC:"option c element",
-            optionD:"option d element "
-        }],
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
         answer: "options.optionB", 
         level: 3,
         subject: "the question subject goes here", 
         duration: 60 ,
         icon: "image6.png", 
-         instruction: [{
-            inst1:"the instruction for the question goes here", 
-            inst2: "the instruction for the question goes here"
-        }],
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
         explanation:"the explanation 6 goes here", 
         trial: 0 },
 
@@ -155,7 +206,6 @@ var exams = [
 router.get('/', function(req, res){
     res.json(exams);
 });
-
 
 // getting an exam by using an id
 
@@ -276,14 +326,14 @@ router.delete('/:id', function(req, res){
     var removeIndex = exams.map(function(exam){
         return exam.id;
     }).indexOf(req.params.id);
-    if(removeIndex === -1){
+
+    if( removeIndex === -1){
         res.json({message: "question not found"});
-    }else{
+    } else {
         exam.splice(removeIndex, 1);
 
         //todo return the deleted exam object itself
         res.send({message: "question id " + req.params.id + " is removed.", location: "/delete/"});
-
     }
 });
 //todo remove extra (unnecessary) newlines
