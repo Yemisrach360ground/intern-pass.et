@@ -239,7 +239,7 @@ router.post('/', function(req, res){
     }
     else{
         var newId = exams[exams.length-1].id+1;
-        exams.push({
+        var nexam = exams.push({
             id: newId,
             title: req.body.title,
             question: req.body.question,
@@ -253,7 +253,7 @@ router.post('/', function(req, res){
             trial: req.body.trial
         });
         //todo give the exam object itself as the response
-        res.json({message: "New question created.", location: "/exam/" + newId});
+        res.json({message: "New question created.", exam: nexam});
     }
 });
 
@@ -274,14 +274,14 @@ router.put('/:id', function(req, res){
       res.json({message: "Bad Request"});
     }
     else{
-        //Gets us the index of movie with given id.
+        //Gets us the index of exam with given id.
         var updateIndex = exams.map(function(exam){
             return exam.id;
         }).indexOf(parseInt(req.params.id));
         if(updateIndex === -1){
 
-            //Movie not found, create new
-            exams.push({
+            //exam not found, create new
+            var nexam = exams.push({
                 id: req.params.id,
                 title: req.body.title,
                 question: req.body.question,
@@ -295,12 +295,12 @@ router.put('/:id', function(req, res){
                 trial: req.body.trial
             });
             //todo return the exam object itself as json
-            res.json({message: "New question created.", location: "/exams/" + req.params.id});
+            res.json({message: "New question created.", exam: nexam});
 
         }
         else{
-            //Update existing movie
-            exams[updateIndex] = {
+            //Update existing exam
+            var uexam = exams[updateIndex] = {
               id: req.params.id,
               title: req.body.title,
               question: req.body.question,
@@ -314,7 +314,7 @@ router.put('/:id', function(req, res){
               trial: req.body.trial
             };
             //todo return the exam object itself
-            res.json({message: "question id " + req.params.id + " updated.", location: "/exams/" + req.params.id});
+            res.json({message: "question id " + req.params.id + " updated.", exam: uexam});
         }
     }
 });
@@ -330,10 +330,11 @@ router.delete('/:id', function(req, res){
     if( removeIndex === -1){
         res.json({message: "question not found"});
     } else {
+        rexam= exam[removeIndex];
         exam.splice(removeIndex, 1);
 
         //todo return the deleted exam object itself
-        res.send({message: "question id " + req.params.id + " is removed.", location: "/delete/"});
+        res.send({message: "question id " + req.params.id + " is removed.", exam: rexam});
     }
 });
 //todo remove extra (unnecessary) newlines
