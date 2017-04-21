@@ -1,5 +1,8 @@
 var express = require('express');
+var mongoose = require('mongoose');
+var exams = require('../models/exam')
 var router = express.Router();
+
 var exams = [
     //todo rewrite this array of objects downwards instead of horizontal for redability. Just like the first item here
     {
