@@ -11,6 +11,7 @@ let examSchema = new Schema(
     level: { type: Number, required: true },  
     subject: { type: String, required: true}, 
     duration: { type: Number, required: true }, 
+    icon:{type:String, required: true},
     instruction: [String], 
     explanation: { type: String, required: true },   
     trial: { type: Number, required: true }, 

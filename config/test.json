@@ -1,3 +1,3 @@
 {
-    "DBHost": "mongodb://localhost:27017/bookstoretest"
+    "DBHost": "mongodb://localhost:27017/examtest"
 }
