@@ -1,5 +1,8 @@
 var express = require('express');
+var mongoose = require('mongoose');
+var exams = require('../models/exam')
 var router = express.Router();
+
 var exams = [
     //todo rewrite this array of objects downwards instead of horizontal for redability. Just like the first item here
     {
@@ -9,24 +12,183 @@ var exams = [
         //todo make instructions a comman separated list of strings without the leading number
         //todo same goes with answer, question, and subject - I mean removing the leading number
         //todo what is level?
+            //the leve will help us to sort how hard the question is 
         //todo what is trial?
+            //and the trial will count how many time he tried to answer the question
         id: 1001,
         title: "Question Title 1", 
-        question: "1. the question goes here", 
-        answer: "1. the answer goes here", 
+        question: "the question goes here", 
+        options: [
+            {
+                id: 1,
+                text : "option a element"
+            }, 
+            {
+                text : "option b element"
+            }, 
+            {
+                text : "option c element"
+            },
+            {
+                text :"option d element "
+            }
+        ],
+        answer: 1, 
         level: 1,
-        subject: "1. the question subject goes here",
-        timeout: 60,
+        subject: "the question subject goes here",
+        duration: 60,
         icon: "image1.png",
-        instruction: "1. the instruction for the question goes here",
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
         explanation:"the explanation 1 goes here",
         trial: 0
     },
-    {id: 1002, title: "Question Title 2", question: "2. the question goes here", answer: "2. the answer goes here", level: 2 ,subject: "2. the question subject goes here", timeout: 60 ,icon: "image2.png", instruction: "2. the instruction for the question goes here", explanation:"the explanation 2 goes here", trial: 0 },
-    {id: 1003, title: "Question Title 3", question: "3. the question goes here", answer: "3. the answer goes here", level: 2 ,subject: "3. the question subject goes here", timeout: 60 ,icon: "image3.png", instruction: "3. the instruction for the question goes here", explanation:"the explanation 3 goes here", trial: 0 },
-    {id: 1004, title: "Question Title 4", question: "4. the question goes here", answer: "4. the answer goes here", level: 1 ,subject: "3. the question subject goes here", timeout: 60 ,icon: "image4.png", instruction: "4. the instruction for the question goes here", explanation:"the explanation 4 goes here", trial: 0 },
-    {id: 1005, title: "Question Title 5", question: "5. the question goes here", answer: "5. the answer goes here", level: 3 ,subject: "2. the question subject goes here", timeout: 60 ,icon: "image5.png", instruction: "5. the instruction for the question goes here", explanation:"the explanation 5 goes here", trial: 0 },
-    {id: 1006, title: "Question Title 6", question: "6. the question goes here", answer: "6. the answer goes here", level: 3 ,subject: "1. the question subject goes here", timeout: 60 ,icon: "image6.png", instruction: "6. the instruction for the question goes here", explanation:"the explanation 6 goes here", trial: 0 },
+    {
+        id: 1002, 
+        title: "Question Title 2", 
+        question: "the question goes here", 
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
+        answer: "options.optionB", 
+        level: 2, 
+        subject: "the question subject goes here", 
+        duration: 60 ,icon: "image2.png", 
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
+        explanation:"the explanation 2 goes here", 
+        trial: 0 
+    },
+    {
+        id: 1003, 
+        title: "Question Title 3", 
+        question: "the question goes here", 
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
+        answer: "options.optionC", 
+        level: 2, 
+        subject: "the question subject goes here", 
+        duration: 60 ,
+        icon: "image3.png", 
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
+    },
+    {
+        id: 1004, 
+        title: "Question Title 4", 
+        question: "the question goes here", 
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
+        answer: "options.optionD", 
+        level: 1,
+        subject: "the question subject goes here", 
+        duration: 60 ,
+        icon: "image4.png", 
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
+        explanation:"the explanation 4 goes here", 
+        trial: 0 },
+    {
+        id: 1005, 
+        title: "Question Title 5", 
+        question: "the question goes here", 
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
+        answer: "options.optionA",  
+        level: 3, 
+        subject: "the question subject goes here", 
+        duration: 60, 
+        icon: "image5.png", 
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
+        explanation:"the explanation 5 goes here", 
+        trial: 0 },
+    {
+        id: 1006, 
+        title: "Question Title 6", 
+        question: "the question goes here", 
+        options: [
+            {
+                text:"option a element"
+            },
+            {
+                text:"option b element"
+            }, 
+            {
+                text:"option c element"
+            },
+            {
+                text:"option d element "
+            }
+        ],
+        answer: "options.optionB", 
+        level: 3,
+        subject: "the question subject goes here", 
+        duration: 60 ,
+        icon: "image6.png", 
+        instruction: [
+            "the instruction for the question goes here", 
+            "the instruction for the question goes here"
+        ],
+        explanation:"the explanation 6 goes here", 
+        trial: 0 },
 
 ];
 
@@ -36,21 +198,17 @@ var exams = [
 //answer
 //level
 //subject
-//timeout
+//duration
 //icon
 //instruction
 //explanation
 //trial
 
-
 //Routes goes here
-
-
 // getting all the datas
 router.get('/', function(req, res){
     res.json(exams);
 });
-
 
 // getting an exam by using an id
 
@@ -77,28 +235,28 @@ router.post('/', function(req, res){
     if(!req.body.title ||
         !req.body.level.toString().match(/^[0-9]{1}$/g) ||
         !req.body.trial.toString().match(/^[0-9]{1}$/g) ||
-        !req.body.timeout.toString().match(/^[0-9]{2}$/g))
+        !req.body.duration.toString().match(/^[0-9]{2}$/g))
         {
         res.status(400);
         res.json({message: "Bad Request"});
     }
     else{
         var newId = exams[exams.length-1].id+1;
-        exams.push({
+        var nexam = exams.push({
             id: newId,
             title: req.body.title,
             question: req.body.question,
             answer: req.body.answer,
             level: req.body.level,
             subject: req.body.subject,
-            timeout: req.body.timeout,
+            duration: req.body.duration,
             icon: req.body.icon,
             instruction: req.body.instruction,
             explanation: req.body.explanation,
             trial: req.body.trial
         });
         //todo give the exam object itself as the response
-        res.json({message: "New question created.", location: "/exam/" + newId});
+        res.json({message: "New question created.", exam: nexam});
     }
 });
 
@@ -111,7 +269,7 @@ router.put('/:id', function(req, res){
 
       !req.body.level.toString().match(/^[0-9]{1}$/g) ||
        !req.body.trial.toString().match(/^[0-9]{1}$/g) ||
-       !req.body.timeout.toString().match(/^[0-9]{2}$/g) ||
+       !req.body.duration.toString().match(/^[0-9]{2}$/g) ||
        !req.params.id.toString().match(/^[0-9]{4,}$/g)
     )
       {
@@ -119,47 +277,47 @@ router.put('/:id', function(req, res){
       res.json({message: "Bad Request"});
     }
     else{
-        //Gets us the index of movie with given id.
+        //Gets us the index of exam with given id.
         var updateIndex = exams.map(function(exam){
             return exam.id;
         }).indexOf(parseInt(req.params.id));
         if(updateIndex === -1){
 
-            //Movie not found, create new
-            exams.push({
+            //exam not found, create new
+            var nexam = exams.push({
                 id: req.params.id,
                 title: req.body.title,
                 question: req.body.question,
                 answer: req.body.answer,
                 level: req.body.level,
                 subject: req.body.subject,
-                timeout: req.body.timeout,
+                duration: req.body.duration,
                 icon: req.body.icon,
                 instruction: req.body.instruction,
                 explanation: req.body.explanation,
                 trial: req.body.trial
             });
             //todo return the exam object itself as json
-            res.json({message: "New question created.", location: "/exams/" + req.params.id});
+            res.json({message: "New question created.", exam: nexam});
 
         }
         else{
-            //Update existing movie
-            exams[updateIndex] = {
+            //Update existing exam
+            var uexam = exams[updateIndex] = {
               id: req.params.id,
               title: req.body.title,
               question: req.body.question,
               answer: req.body.answer,
               level: req.body.level,
               subject: req.body.subject,
-              timeout: req.body.timeout,
+              duration: req.body.duration,
               icon: req.body.icon,
               instruction: req.body.instruction,
               explanation: req.body.explanation,
               trial: req.body.trial
             };
             //todo return the exam object itself
-            res.json({message: "question id " + req.params.id + " updated.", location: "/exams/" + req.params.id});
+            res.json({message: "question id " + req.params.id + " updated.", exam: uexam});
         }
     }
 });
@@ -170,19 +328,17 @@ router.put('/:id', function(req, res){
 router.delete('/:id', function(req, res){
     var removeIndex = exams.map(function(exam){
         return exam.id;
-    }).indexOf(req.params.id); 
-    if(removeIndex === -1){
+    }).indexOf(req.params.id);
+
+    if( removeIndex === -1){
         res.json({message: "question not found"});
-    }else{
+    } else {
+        rexam= exam[removeIndex];
         exam.splice(removeIndex, 1);
+
         //todo return the deleted exam object itself
-        res.send({message: "question id " + req.params.id + " is removed.", location: "/delete/"});
+        res.send({message: "question id " + req.params.id + " is removed.", exam: rexam});
     }
 });
 //todo remove extra (unnecessary) newlines
-
-
-
-
-
 module.exports = router;
