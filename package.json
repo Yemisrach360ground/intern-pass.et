@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "RESTapi project ",
   "main": "index.js",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abrahamgit/intern-pass.et.git"
@@ -26,8 +25,13 @@
     "test": "test"
   },
   "devDependencies": {
+    "body-parser": "^1.17.1",
     "chai": "^3.2.0",
     "chai-http": "^1.0.0",
-    "mocha": "^3.2.0"
+    "config": "^1.25.1",
+    "mocha": "^3.2.0",
+    "mongoose-type-url": "^1.0.2",
+    "morgan": "^1.8.1",
+    "sinon": "^2.1.0"
   }
 }

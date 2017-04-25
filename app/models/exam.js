@@ -1,20 +1,32 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+let URL = require('mongoose-type-url');
 
 //book schema definition
-let examSchema = new Schema(
+let ExamSchema = new Schema(
   {
-    title: { type: String, required: true },
-    question: { type: String, required: true },
-    options: [Schema.Types.Mixed],
-    answer: { type: String, required: true},
-    level: { type: Number, required: true },  
-    subject: { type: String, required: true}, 
-    duration: { type: Number, required: true }, 
-    icon:{type:String, required: true},
-    instruction: [String], 
-    explanation: { type: String, required: true },   
-    trial: { type: Number, required: true }, 
+    id: {
+      type: Number,
+      required: true
+    },
+    title: { 
+      type: String, 
+      required: true
+    },
+    questions_count: {
+      type: Number,
+      required: true
+    },
+    duration: {
+      type: Number,
+      required: true
+    },
+    icon: URL,
+    instructions: [ String ],
+    difficulty: {
+      type: Number,
+      required: true
+    }
   }, 
   { 
     versionKey: false
@@ -22,7 +34,7 @@ let examSchema = new Schema(
 );
 
 // Sets the createdAt parameter equal to the current time
-examSchema.pre('save', next => {
+ExamSchema.pre('save', next => {
   now = new Date();
   if(!this.createdAt) {
     this.createdAt = now;
@@ -31,4 +43,5 @@ examSchema.pre('save', next => {
 });
 
 //Exports the examSchema for use elsewhere.
-module.exports = mongoose.model('exam', examSchema);
+let Exam = mongoose.model('Exam', ExamSchema);
+module.exports = { ExamSchema, Exam };
