@@ -12,12 +12,26 @@ let QuestionSchema = new Schema({
   },
   correct_option_indices: {
     type: [Number],
-    required: true
+    validate: {
+      validator: (v) => {
+        return v.length > 0;
+      },
+      message: 'There must be at least one correct option index'
+    },
+    required: [true, 'Correct option indices required'],
   },
   has_image: Boolean,
   audible: Boolean,
   explanation: String,
-  options: [String],
+  options: {
+    type: [String],
+    validate: {
+      validator: (v) => {
+        return v.length > 0;
+      },
+      message: 'There must be at least one option'
+    }
+  },
   estimatedTime: Number
 });
 
