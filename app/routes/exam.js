@@ -1,5 +1,5 @@
 let mongoose = require('mongoose');
-let { Exam } = require('../models/Exam');
+let { Exam } = require('../models/exam');
 
 /*
  * GET /Exam route to retrieve all the Exams.
@@ -39,7 +39,7 @@ function getExam(req, res) {
 		if(err) res.send(err);
 		//If no errors, send it back to the client
 		res.json(Exam);
-	});		
+	});
 }
 
 /*
@@ -60,7 +60,7 @@ function updateExam(req, res) {
 		Object.assign(Exam, req.body).save((err, Exam) => {
 			if(err) res.send(err);
 			res.json({ message: 'Exam updated!', Exam });
-		});	
+		});
 	});
 }
 

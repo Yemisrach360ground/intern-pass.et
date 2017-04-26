@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 let should = require('chai').should();
-let { Exam } = require('../app/models/Exam');
+let { Exam } = require('../app/models/exam');
 
 describe('Exam Model', () => {
   it('should be invalid if id is empty', (done) => {
