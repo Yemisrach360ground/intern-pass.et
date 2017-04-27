@@ -26,7 +26,7 @@ function postExam(req, res) {
 			res.send(err);
 		}
 		else { //If no errors, send it back to the client
-			res.json({message: "Exam successfully added!", Exam });
+			res.json({message:"Exam successfully added!", Exam });
 		}
 	});
 }

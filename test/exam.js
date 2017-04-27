@@ -14,8 +14,8 @@ describe('Exam Model', () => {
       });
       e.validate((err) => {
         err.errors.id.should.exist;
+        done();
       })
-    done();
   });
 
   it('should be invalid if title is empty', (done) => {
@@ -29,10 +29,10 @@ describe('Exam Model', () => {
       });
       e.validate((err) => {
         err.errors.title.should.exist;
+        done();
       })
-    done();
   });
-  it('should be invalid if question_count is empty', (done) => {
+  it('should be invalid if questions_count is empty', (done) => {
      let e = new Exam({
         id: 4,
         title: "Title of the exam",
@@ -42,9 +42,9 @@ describe('Exam Model', () => {
         difficulty: 2
       });
       e.validate((err) => {
-        err.errors.question_count.should.exist;
+        err.errors.questions_count.should.exist;
+        done();
       })
-    done();
   });
   it('should be invalid if questions_count is not numeric', (done) => {
      let e = new Exam({
@@ -58,8 +58,8 @@ describe('Exam Model', () => {
       });
       e.validate((err) => {
         err.errors.questions_count.should.exist;
+        done();
       })
-    done();
   });
   it('should be invalid if icon is not URL', (done) => {
      let e = new Exam({
@@ -72,8 +72,8 @@ describe('Exam Model', () => {
       });
       e.validate((err) => {
         err.errors.icon.should.exist;
+        done();
       })
-    done();
   });
   it('should be invalid if instructions is not of Array type', (done) => {
       let e = new Exam({
@@ -86,8 +86,8 @@ describe('Exam Model', () => {
       });
       e.validate((err) => {
         err.errors.instructions.should.exist;
+        done();
       })
-    done();
   });
   it('should be invalid if difficulty is not numeric', (done) => {
       let e = new Exam({
@@ -100,7 +100,7 @@ describe('Exam Model', () => {
       });
       e.validate((err) => {
         err.errors.difficulty.should.exist;
+        done();
       })
-    done();
   });
 })
