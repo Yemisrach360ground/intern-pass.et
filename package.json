@@ -15,11 +15,12 @@
   "homepage": "https://github.com/abrahamgit/intern-pass.et#readme",
   "dependencies": {
     "express": "^4.15.2",
+    "jsonwebtoken": "^7.4.0",
     "mongoose": "^4.9.6"
   },
   "scripts": {
     "start": "SET NODE_ENV=dev && node server.js",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 1000"
   },
   "directories": {
     "test": "test"

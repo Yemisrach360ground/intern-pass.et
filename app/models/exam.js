@@ -22,12 +22,9 @@ let ExamSchema = new Schema({
           required: true
   },
   instructions:{
-          type:'Array',
-          validate: {
-          validator: (value)=> {
-            return Array.every((value)=> typeof value === 'string');
-          }
-  }},
+        type: [String],
+        required: true
+},
 
 
   difficulty:{

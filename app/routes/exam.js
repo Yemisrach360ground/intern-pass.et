@@ -46,8 +46,22 @@ function getExam(req, res) {
  * DELETE /Exam/:id to delete a Exam given its id.
  */
 function deleteExam(req, res) {
-	Exam.remove({_id : req.params.id}, (err, result) => {
-		res.json({ message: "Exam successfully deleted!", result });
+	Exam.remove({_id : req.params.id}, (err) => {
+		// if (err) res.send(err);
+		// res.json({ message: 'Exam successfully deleted!' });
+		
+		if (err) {
+			res.send({error: err, message: "failures"});
+			return;
+		}
+
+		Exam.findOne({_id: req.params.id}, (err, exam) => {
+			if(err) {
+				res.json({message: 'Exam does not exist'});
+			} else {
+				res.json({ message: "Exam successfully deleted!" });
+			}
+		})
 	});
 }
 
