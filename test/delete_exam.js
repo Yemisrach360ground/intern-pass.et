@@ -2,7 +2,8 @@
 process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
-let Exam = require('../app/models/exam');
+let Exam = require('../app/models/exam').Exam;
+
 
 //Require the dev-dependencies
 let chai = require('chai');
@@ -23,13 +24,13 @@ chai.use(chaiHttp);
         title: "Question Title",
         questions_count: 3,
         duration: 60,
-        icon: "www.google.com",
+        icon: "http://www.google.com",
         instruction: [
             "the instruction for the question goes here",
             "the instruction for the question goes here"
         ],
         difficulty:3
-        })
+      })
 	  	exam.save((err, exam) => {
 				chai.request(server)
 			    .delete('/exam/' + exam.id)

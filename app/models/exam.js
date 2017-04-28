@@ -1,14 +1,10 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
-require('mongoose-type-url');
+let URL = require('mongoose-type-url');
+
 
 //book schema definition
 let ExamSchema = new Schema({
-
-  id: {
-            type: 'number',
-            required: true
-        },
   title:{
             type: 'string',
             required:true
@@ -21,11 +17,18 @@ let ExamSchema = new Schema({
           type: 'number',
           required:true
  },
-  icon: [{type: mongoose.SchemaTypes.Url}],
+  icon:{
+          type:mongoose.SchemaTypes.Url,
+          required: true
+  },
   instructions:{
           type:[String],
-          required:true
-  },
+          validate: {
+          validator: (value)=> {
+            return Array.isArray(value);
+          }
+  }},
+
   difficulty:{
         type:'number',
         required:true

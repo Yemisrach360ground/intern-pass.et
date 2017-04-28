@@ -19,14 +19,14 @@ function getExams(req, res) {
  */
 function postExam(req, res) {
 	//Creates a new Exam
-	var newExam = new Exam(req.body);
+	let newExam = new Exam(req.body);
 	//Save it into the DB.
-	newExam.save((err,Exam) => {
+	newExam.save((err, exam) => {
 		if(err) {
 			res.send(err);
 		}
 		else { //If no errors, send it back to the client
-			res.json({message:"Exam successfully added!", Exam });
+			res.json({message:"Exam successfully added!", exam });
 		}
 	});
 }
@@ -35,10 +35,10 @@ function postExam(req, res) {
  * GET /Exam/:id route to retrieve a Exam given its id.
  */
 function getExam(req, res) {
-	Exam.findById(req.params.id, (err, Exam) => {
+	Exam.findById(req.params.id, (err, exam) => {
 		if(err) res.send(err);
 		//If no errors, send it back to the client
-		res.json(Exam);
+		res.json(exam);
 	});
 }
 

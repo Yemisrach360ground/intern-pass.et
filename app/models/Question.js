@@ -37,4 +37,5 @@ let QuestionSchema = new Schema({
   }
 });
 
+let Question = mongoose.model('Question', QuestionSchema);
 module.exports = mongoose.model('Question', QuestionSchema);

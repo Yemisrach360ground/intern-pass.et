@@ -2,7 +2,7 @@
 process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
-let Exam = require('../app/models/exam');
+let Exam = require('../app/models/exam').Exam;
 
 //Require the dev-dependencies
 let chai = require('chai');
@@ -27,7 +27,7 @@ chai.use(chaiHttp);
                 "the instruction for the question goes here",
                 "the instruction for the question goes here"
             ]
-            // difficulty:3
+           //difficulty:3
         }
 
 			chai.request(server)
@@ -44,6 +44,7 @@ chai.use(chaiHttp);
 	  });
 	  it('it should POST a exam ', (done) => {
 	  	let exam = {
+
             title:"Title of the exam",
             questions_count: 20,
             duration: 20,
@@ -51,7 +52,7 @@ chai.use(chaiHttp);
             instruction: ["instruction1", "instruction2"
 ],
             difficulty:2
-        }
+        };
 			chai.request(server)
 		    .post('/exam')
 		    .send(exam)
@@ -59,13 +60,13 @@ chai.use(chaiHttp);
 			  	res.should.have.status(200);
 			  	res.body.should.be.a('object');
 			  	res.body.should.have.property('message').eql('Exam successfully added!');
-			  	res.body.Exam.should.have.property('title');
-			  	res.body.Exam.should.have.property('questions_count');
-			  	res.body.Exam.should.have.property('duration');
-			  	res.body.Exam.should.have.property('icon');
-          res.body.Exam.should.have.property('instructions');
-			  	res.body.Exam.should.have.property('difficulty');
-          res.body.Exam.should.have.property('id');
+			  	res.body.exam.should.have.property('title');
+			  	res.body.exam.should.have.property('questions_count');
+			  	res.body.exam.should.have.property('duration');
+			  	res.body.exam.should.have.property('icon');
+          res.body.exam.should.have.property('instructions');
+			  	res.body.exam.should.have.property('difficulty');
+          res.body.exam.should.have.property('_id');
 		      done();
 		    });
 	  });

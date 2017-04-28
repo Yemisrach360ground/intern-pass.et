@@ -13,7 +13,7 @@ describe('Exam Model', () => {
         difficulty: 2
       });
       e.validate((err) => {
-        err.errors.id.should.exist;
+        err.errors._id.should.exist;
         done();
       })
   });
