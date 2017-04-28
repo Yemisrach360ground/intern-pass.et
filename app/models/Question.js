@@ -3,7 +3,7 @@ let Schema = mongoose.Schema;
 //let validate = require('mongoose-validator');
 
 let QuestionSchema = new Schema({
-     _id: { type: Schema.Types.ObjectId, required: true },
+    //  _id: { type: Schema.Types.ObjectId, required: true },
      correct_option_indices: {type: [Number], required: true },
      has_image: { type: Boolean, required: true },
      audible: { type: Boolean, required: true },

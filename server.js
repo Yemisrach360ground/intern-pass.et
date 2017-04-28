@@ -37,13 +37,8 @@ app.use(bodyParser.json({ type: 'application/json'}));
 
 app.get("/", (req, res) => res.json({message: "Welcome to our examstore!"}));
 
-app.route("/exam")
-	.get(exam.getExams)
-	.post(exam.postExam);
-app.route("/exam/:id")
-	.get(exam.getExam)
-	.delete(exam.deleteExam)
-	.put(exam.updateExam);
+app.use("/exam", require("./app/routes/exam"));
+app.use('/users', require('./app/routes/user'));
 
 app.route("/question")
 	.get(question.getQuestions)
@@ -131,11 +126,6 @@ app.use(function(req, res, next){
 	}
 });
 
-app.get('/users', function(req, res){
-	User.find({}, function(err, users){
-		res.json(users);
-	});
-});
 
 
 

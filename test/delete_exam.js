@@ -21,19 +21,16 @@ chai.use(chaiHttp);
   describe('/DELETE/:id exam', () => {
 	  it('it should DELETE a exam given the id', (done) => {
 	  	let exam = new Exam({
-        title: "Question Title",
-        questions_count: 3,
-        duration: 60,
-        icon: "http://www.google.com",
-        instruction: [
-            "the instruction for the question goes here",
-            "the instruction for the question goes here"
-        ],
-        difficulty:3
-      })
+			title: "Question Title",
+			questions_count: 3,
+			duration: 60,
+			icon: "http://www.google.com",
+			instruction: "the instruction for the question goes here",
+			difficulty:3
+      	})
 	  	exam.save((err, exam) => {
 				chai.request(server)
-			    .delete('/exam/' + exam.id)
+			    .delete('/exam/' + exam._id)
 			    .end((err, res) => {
 				  	res.should.have.status(200);
 				  	res.body.should.be.a('object');

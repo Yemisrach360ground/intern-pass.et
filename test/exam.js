@@ -3,20 +3,20 @@ let should = require('chai').should();
 let { Exam } = require('../app/models/exam');
 
 describe('Exam Model', () => {
-  it('should be invalid if id is empty', (done) => {
-      let e = new Exam({
-        title: "Title of the exam",
-        questions_count: 20,
-        duration: 20,
-        icon: "http://www.google.co.uk",
-        instructions: ["instruction1", "instruction2"],
-        difficulty: 2
-      });
-      e.validate((err) => {
-        err.errors._id.should.exist;
-        done();
-      })
-  });
+  // it('should be invalid if id is empty', (done) => {
+  //     let e = new Exam({
+  //       title: "Title of the exam",
+  //       questions_count: 20,
+  //       duration: 20,
+  //       icon: "http://www.google.co.uk",
+  //       instructions: ["instruction1", "instruction2"],
+  //       difficulty: 2
+  //     });
+  //     e.validate((err) => {
+  //       err.errors._id.should.exist;
+  //       done();
+  //     })
+  // });
 
   it('should be invalid if title is empty', (done) => {
       let e = new Exam({
@@ -104,3 +104,4 @@ describe('Exam Model', () => {
       })
   });
 })
+
