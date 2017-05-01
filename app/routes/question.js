@@ -23,7 +23,7 @@ function getQuestions(req, res) {
  	//Save it into the DB.
  	newQuestion.save((err,Question) => {
  		if(err) {
- 			res.send(err);
+ 		res.send(err);
  		}
  		else { //If no errors, send it back to the client
  			res.json({message:"Question successfully added!", Question });
@@ -47,7 +47,8 @@ function getQuestion(req, res) {
  */
 function deleteQuestion(req, res) {
 	Question.remove({_id : req.params.id}, (err, result) => {
-		res.json({ message: "Question successfully deleted!", result });
+		 if (err) res.send(err);
+		 res.json({ message: "Question successfully deleted!", result });
 	});
 }
 

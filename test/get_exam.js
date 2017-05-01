@@ -43,7 +43,7 @@ describe('Exams', () => {
                 title:"Exam 1",
                 questions_count:60,
                 duration: 60,
-                icon: "image.png",
+                icon: "http://image.png",
                 instructions: [
                     "the instruction for the question goes here",
                     "the instruction for the question goes here"
@@ -72,3 +72,5 @@ describe('Exams', () => {
       });
 	});
 });
+
+

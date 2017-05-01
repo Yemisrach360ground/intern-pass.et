@@ -53,3 +53,66 @@ chai.use(chaiHttp);
 		  });
 	  });
   });
+
+
+
+describe('/GET/ with out auth', () => {
+	  it('it should not be accessed with invalid auth token', (done) => {
+    			chai.request(server)
+			    .get('/users/')
+			    .end((err, res) => {
+				  	res.should.have.status(403);
+				  	res.body.should.be.a('object');
+				  	// res.body.should.have.property('message').eql('Exam updated!');
+
+			      done();
+			    });
+		  });
+	  });
+ 
+
+describe('/GET and /post/ it should access with valid auth token', () => {
+    it('it should list user without auth', (done) => {  
+        chai.request(server)
+        .post('/setup/')
+        .send({
+            name: 'randome user',
+            password: 'password',
+            admin: true
+        })
+        .end((err, res) => {
+            chai.request(server)
+            .post('/authenticate')
+            .send({
+                name: res.name,
+                password: res.password
+            })
+            .end((err, res) => {
+                let token = res.token;
+                chai.request(server)
+                .get('/users?token=' + token)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    // res.body.should.have.property('message').eql('Exam updated!');
+
+                    done();
+                });
+            })
+        })
+    });
+});
+
+describe('/GET and /post/ it should access with valid auth token', () => {
+it('it should fail if token is invalid', (done) => {  
+        token = "users?token=1";
+        chai.request(server)
+        .get('/users?token=' + token)
+        .end((err, res) => {
+            res.should.have.status(403);
+            res.body.should.be.a('object');
+            // res.body.should.have.property('message').eql('Exam updated!');
+            done();
+        });
+    });
+});
